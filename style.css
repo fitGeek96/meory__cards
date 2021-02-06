@@ -72,12 +72,23 @@ h1 button {
     left: 0;
     height: 100%;
     width: 100%;
+    transform: translateX(50%) rotateY(-10deg);
+    transition: transform .4s ease, opacity .4s ease;
 }
 
 .card.active {
     cursor: pointer;
     opacity: 1;
     z-index: 10;
+    transform: translateX(0) rotateY(0deg);
+}
+
+.card.left {
+    transform: translateX(-50%) rotateY(10deg);
+}
+
+.card.show__answer .inner__card {
+    transform: rotateX(180deg);
 }
 
 .inner__card {
@@ -86,10 +97,12 @@ h1 button {
     height: 100%;
     width: 100%;
     position: relative;
+    transform-style: preserve-3d;
 }
 
 .inner__card__front,
 .inner__card__back {
+    backface-visibility: hidden;
     position: absolute;
     top: 0;
     left: 0;
@@ -99,4 +112,25 @@ h1 button {
     height: 100%;
     width: 100%;
     background-color: white;
+}
+
+.inner__card__front {
+    transform: rotateX(0deg);
+    z-index: 2;
+}
+
+.inner__card__back {
+    transform: rotateX(180deg);
+}
+
+.inner__card__front::after,
+.inner__card__back::after {
+    content: '\f021     Flip';
+    font-family: 'Font Awesome 5 Free', Lato, sans-serif;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ddd;
 }
