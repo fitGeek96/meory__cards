@@ -98,6 +98,7 @@ h1 button {
     width: 100%;
     position: relative;
     transform-style: preserve-3d;
+    transition: transform .4s ease;
 }
 
 .inner__card__front,
